@@ -1,2 +1,3 @@
 # android-security-handbook
-Guide to Android app security analysis, reverse engineering &amp; pentesting
+
+This book teaches security analysis of Android applications (APK reversing, dynamic instrumentation, network traffic inspection and interception, etc.).
