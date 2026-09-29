@@ -18,4 +18,4 @@ TODO
 {{#include ../../src/dumpmem/src/main.rs}}
 ```
 
-[View on GitHub](https://github.com/gemesa/android-security-handbook/blob/src/dumpmem/src/main.rs).
+[View on GitHub](https://github.com/gemesa/android-security-handbook/blob/main/src/dumpmem/src/main.rs).
