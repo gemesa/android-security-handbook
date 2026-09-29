@@ -1,6 +1,7 @@
 # Summary
 
 [Introduction](./introduction.md)
+[Prerequisites](./prerequisited.md)
 [References](./references.md)
 
 # Dynamic analysis
