@@ -7,6 +7,12 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 $ rustup target add aarch64-linux-android
 ```
 
+##
+
+```
+$ cargo install yara-x-cli
+```
+
 ## udev rules
 
 Adding the udev rules manually might not be necessary on certain distros.

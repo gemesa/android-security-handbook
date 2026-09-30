@@ -7,3 +7,4 @@
 # Dynamic analysis
 
 - [Memory dumping](./memory-dumping.md)
+- [Memory search](./memory-search.md)
