@@ -23,7 +23,7 @@ jobs:
         uses: nttld/setup-ndk@v1
         with:
           ndk-version: r30
-          local-cache: true
+          local-cache: false
 
       - name: Configure NDK linker
         run: |
