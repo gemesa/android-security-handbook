@@ -12,13 +12,6 @@ There are other solutions available for dumping memory, e.g. [hexdump](https://f
 
 ## Usage
 
-Note: check the Android SDK version of your phone and select the linker accordingly (see [prerequisites](./prerequisites.md)).
-
-```
-$ adb shell getprop ro.build.version.sdk
-37
-```
-
 ```
 $ cargo build --release --target aarch64-linux-android
 $ adb push target/aarch64-linux-android/release/dumpmem /data/local/tmp/
