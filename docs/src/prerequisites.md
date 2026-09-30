@@ -21,9 +21,6 @@ Note: check the Android SDK version of your phone and select the linker accordin
 ```
 $ adb shell getprop ro.build.version.sdk
 37
-```
-
-```
 $ echo 'export ANDROID_HOME=$HOME/Android/Sdk' >> ~/.zshrc
 $ echo 'export PATH=$PATH:$ANDROID_HOME/platform-tools' >> ~/.zshrc
 $ echo 'export PATH=$PATH:$ANDROID_HOME/emulator' >> ~/.zshrc
