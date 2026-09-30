@@ -7,7 +7,7 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 $ rustup target add aarch64-linux-android
 ```
 
-##
+## yara-x
 
 ```
 $ cargo install yara-x-cli
