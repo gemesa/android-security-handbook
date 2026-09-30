@@ -23,7 +23,30 @@ $ cargo build --release --target aarch64-linux-android
 $ adb push target/aarch64-linux-android/release/dumpmem /data/local/tmp/
 ```
 
-TODO: run the binary
+Phone:
+
+```
+# ./dumpmem -p com.example.app
+Found PID: 13538
+Stopping the app...
+Dumping rw-p regions...
+Done: /data/local/tmp/memdump_13538
+Resuming the app...
+# ls memdump_13538/
+bin  dumpmem.log
+# ls memdump_13538/bin/ | head -n 5
+2000000-12000000.bin
+22000000-32000000.bin
+60f0f04000-60f0f06000.bin
+60f18ef000-60f19eb000.bin
+60f2d2a000-60f2d2c000.bin
+# head -n 5 memdump_13538/dumpmem.log
+02000000-12000000 rw-p 00000000 00:00 0                                  [anon:dalvik-main space]
+22000000-32000000 rw-p 00000000 00:00 0                                  [anon:dalvik-free list large object space]
+42000000-44000000 r--s 00000000 00:01 1043                               /memfd:jit-zygote-cache (deleted)
+44000000-46000000 r-xs 02000000 00:01 1043                               /memfd:jit-zygote-cache (deleted)
+46000000-48000000 r--s 00000000 00:01 1528                               /memfd:jit-cache (deleted)
+```
 
 ## Code
 
