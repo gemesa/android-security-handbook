@@ -8,6 +8,8 @@ Capture the mapped memory of a process to recover values from RAM.
 
 The list of mapped regions is available through `/proc/<pid>/maps`. The content of these regions can be read via `/proc/<pid>/mem`. It is a good idea to freeze the process first, then dump the memory. For now, we only dump `rw-p` regions.
 
+There are other solutions available for dumping memory, e.g. [hexdump](https://frida.re/docs/javascript-api/#hexdump), [fridump](https://github.com/Nightbringer21/fridump) or [`gdb` and `lldb`](https://lldb.llvm.org/use/map.html#save-binary-memory-data-starting-at-0x1000-and-ending-at-0x2000-to-a-file). The main problem is that attaching to a process with `frida`, `gdb` and `lldb` can be detected.
+
 ## Usage
 
 Note: check the Android SDK version of your phone and select the linker accordingly (see [prerequisites](./prerequisited.md)).
