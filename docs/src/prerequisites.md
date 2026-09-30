@@ -9,7 +9,7 @@ $ rustup target add aarch64-linux-android
 
 # Android Studio
 
-Download `android-studio-quail1-patch2-linux.tar.gz` from https://developer.android.com/studio.
+Download [Android Studio](https://developer.android.com/studio) (`android-studio-quail1-patch2-linux.tar.gz`).
 
 ```
 sudo dnf install zlib.i686 ncurses-libs.i686 bzip2-libs.i686

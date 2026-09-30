@@ -12,7 +12,7 @@ There are other solutions available for dumping memory, e.g. [hexdump](https://f
 
 ## Usage
 
-Note: check the Android SDK version of your phone and select the linker accordingly (see [prerequisites](./prerequisited.md)).
+Note: check the Android SDK version of your phone and select the linker accordingly (see [prerequisites](./prerequisites.md)).
 
 ```
 $ adb shell getprop ro.build.version.sdk
