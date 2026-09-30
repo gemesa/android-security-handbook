@@ -7,7 +7,7 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 $ rustup target add aarch64-linux-android
 ```
 
-# Android Studio
+## Android Studio
 
 Download [Android Studio](https://developer.android.com/studio) (`android-studio-quail1-patch2-linux.tar.gz`).
 
