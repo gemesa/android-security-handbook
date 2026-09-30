@@ -10,7 +10,7 @@ The list of mapped regions is available through `/proc/<pid>/maps`. The content 
 
 ## Usage
 
-Note: check the Android SDK version of your phone and select the linker accordingly.
+Note: check the Android SDK version of your phone and select the linker accordingly (see [prerequisites](./prerequisited.md)).
 
 ```
 $ adb shell getprop ro.build.version.sdk
@@ -18,7 +18,6 @@ $ adb shell getprop ro.build.version.sdk
 ```
 
 ```
-$ export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android36-clang
 $ cargo build --release --target aarch64-linux-android
 $ adb push target/aarch64-linux-android/release/dumpmem /data/local/tmp/
 ```

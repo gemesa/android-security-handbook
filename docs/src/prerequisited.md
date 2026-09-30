@@ -23,6 +23,7 @@ echo 'export PATH=$PATH:$ANDROID_HOME/emulator' >> ~/.zshrc
 echo 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin' >> ~/.zshrc
 echo 'export PATH=$PATH:$ANDROID_HOME/build-tools/$(ls $ANDROID_HOME/build-tools | tail -1)' >> ~/.zshrc
 echo 'export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/$(ls $ANDROID_HOME/ndk | tail -1)' >> ~/.zshrc
+echo 'export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android36-clang' >> ~/.zshrc
 source ~/.zshrc
 ```
 
