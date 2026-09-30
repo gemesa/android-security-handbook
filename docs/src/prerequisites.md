@@ -7,6 +7,21 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 $ rustup target add aarch64-linux-android
 ```
 
+## udev rules
+
+Adding the udev rules manually might not be necessary on certain distros.
+
+```
+$ lsusb
+...
+Bus 001 Device 067: ID 18d1:4ee7 Google Inc. Nexus/Pixel Device (charging + debug)
+...
+$ echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="4ee7", MODE="0660", GROUP="plugdev"' | sudo tee /etc/udev/rules.d/51-android.rules
+$ sudo usermod -aG plugdev $USER
+$ sudo udevadm control --reload
+$ sudo udevadm trigger
+```
+
 ## Android Studio
 
 Download [Android Studio](https://developer.android.com/studio) (`android-studio-quail1-patch2-linux.tar.gz`).
