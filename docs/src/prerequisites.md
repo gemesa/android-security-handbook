@@ -68,6 +68,9 @@ $ avdmanager create avd -n test -k "system-images;android-36;google_apis;x86_64"
 $ android emulator list                                                         
 test
 $ android emulator start test
+Emulator process 2673237 started, log file location: '/home/gemesa/.android/test/emulator.log'
+Waiting for virtual device 'test' to fully start (242 seconds left)
+Virtual device successfully started as 'emulator-5554'
 $ adb devices
 List of devices attached
 emulator-5554	device
