@@ -4,6 +4,10 @@
 [Prerequisites](./prerequisites.md)
 [References](./references.md)
 
+# Rooting
+
+- [KernelSU](./kernelsu.md)
+
 # Dynamic analysis
 
 - [`frida`](./frida.md)
