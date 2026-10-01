@@ -57,3 +57,22 @@ After startup install additional tools:
   - --> **NDK (Side by side)**
   - --> **Android SDK Command-line Tools (latest)**
   - --> **CMake**
+
+## Emulator
+
+Note: `google_apis_playstore` does not allow `adb root`.
+
+```
+$ sdkmanager "system-images;android-36;google_apis;x86_64"
+$ avdmanager create avd -n test -k "system-images;android-36;google_apis;x86_64"
+$ android emulator list                                                         
+test
+$ android emulator start test
+$ adb devices
+List of devices attached
+emulator-5554	device
+$ adb shell getprop ro.build.version.sdk
+36
+$ adb root
+$ adb shell
+```
