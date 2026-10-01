@@ -1,2 +1,4 @@
 target/
 *.yar
+frida-server*
+__handlers__/

@@ -6,5 +6,6 @@
 
 # Dynamic analysis
 
+- [`frida`](./frida.md)
 - [Memory dumping](./memory-dumping.md)
 - [Memory search](./memory-search.md)

@@ -79,3 +79,9 @@ $ adb shell getprop ro.build.version.sdk
 $ adb root
 $ adb shell
 ```
+
+## `pipx`
+
+```
+$ sudo dnf install pipx
+```
