@@ -13,7 +13,8 @@ Alternatively, [`r2`](https://book.rada.re/search/basic_searches.html) could be 
 ## Usage
 
 ```
-$ mkrule 1234 > rule.yar
+$ cargo build --release
+$ target/release/mkrule 1234 > rule.yar
 $ yr scan rule.yar src/mkrule/test.bin -s
 searchmem src/mkrule/test.bin
 0x100:4:$ascii: 1234
