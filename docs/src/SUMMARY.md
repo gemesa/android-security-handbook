@@ -7,6 +7,7 @@
 # Rooting
 
 - [KernelSU](./kernelsu.md)
+- [Magisk](./magisk.md)
 
 # Dynamic analysis
 
