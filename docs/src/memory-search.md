@@ -14,23 +14,45 @@ Alternatively, [`r2`](https://book.rada.re/search/basic_searches.html) could be 
 
 ```
 $ cargo build --release
-$ target/release/mkrule 28573546 > rule.yar
-$ yr scan rule.yar memdump_3585/bin -s
-searchmem memdump_3585/bin/2000000-e000000.bin
-0xdfc64:8:$ascii: 28573546
-0xdfd6c:16:$utf16_le: 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00
-0xdfd8d:16:$utf16_le: 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00
-0xdfd6b:16:$utf16_be: 00 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36
-0xdfd8c:16:$utf16_be: 00 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36
-0xdfdac:4:$int32_le: 6a ff b3 01
-0xdfdcc:4:$int32_le: 6a ff b3 01
-0xdfdbc:4:$int32_be: 01 b3 ff 6a
-0xdfde8:4:$int32_be: 01 b3 ff 6a
-0xdfdcc:8:$int64_le: 6a ff b3 01 00 00 00 00
-0xdfde4:8:$int64_be: 00 00 00 00 01 b3 ff 6a
-0xdfdfc:4:$hex: 28 57 35 46
-0xdfe0c:4:$hex_rev: 46 35 57 28
-$ cat memdump_3585/dumpmem.log | grep -E "0*2000000-0*e000000 rw-p"
+$ target/release/mkrule 285735461 > rule.yar
+$ cat rule.yar
+rule searchmem
+{
+    strings:
+        $ascii        = "285735461" ascii nocase
+        $utf16_le     = { 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00 31 00 }
+        $utf16_be     = { 00 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00 31 }
+        $int32_le     = { 25 fa 07 11 }
+        $int32_be     = { 11 07 fa 25 }
+        $int64_le     = { 25 fa 07 11 00 00 00 00 }
+        $int64_be     = { 00 00 00 00 11 07 fa 25 }
+        $hex          = { 28 57 35 46 1? }
+        $hex_rev      = { 1? 46 35 57 28 }
+    condition:
+        any of them
+}
+$ yr scan rule.yar memdump_5542/bin -s
+searchmem memdump_5542/bin/2000000-e000000.bin
+0x2d02bc:9:$ascii: 285735461
+0x2d02e8:9:$ascii: 285735461
+0x2d0304:9:$ascii: 285735461
+0x2d04b4:18:$utf16_le: 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00 31 00
+0x2d04d4:18:$utf16_le: 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00 31 00
+0x2d04f4:18:$utf16_le: 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00 31 00
+0x2d0515:18:$utf16_le: 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00 31 00
+0x2d04b3:18:$utf16_be: 00 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00 31
+0x2d04d3:18:$utf16_be: 00 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00 31
+0x2d04f3:18:$utf16_be: 00 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00 31
+0x2d0514:18:$utf16_be: 00 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00 31
+0x2d0564:4:$int32_le: 25 fa 07 11
+0x2d05e4:4:$int32_le: 25 fa 07 11
+0x2d05a4:4:$int32_be: 11 07 fa 25
+0x2d0630:4:$int32_be: 11 07 fa 25
+0x2d05e4:8:$int64_le: 25 fa 07 11 00 00 00 00
+0x2d062c:8:$int64_be: 00 00 00 00 11 07 fa 25
+0x2d0644:5:$hex: 28 57 35 46 10
+0x2d065c:5:$hex_rev: 10 46 35 57 28
+$ cat memdump_5542/dumpmem.log | grep -E "0*2000000-0*e000000 rw-p"
 02000000-0e000000 rw-p 00000000 00:00 0                                  [anon:dalvik-main space]
 ```
 

@@ -7,7 +7,7 @@ public class Test {
     private static byte[][] keep;
 
     public static void init() {
-        int x = 28573546;
+        int x = 285735461;
         String s = Integer.toString(x);
 
         keep = new byte[][] {
@@ -18,8 +18,8 @@ public class Test {
                 ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN).putInt(x).array(),
                 ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putLong(x).array(),
                 ByteBuffer.allocate(8).order(ByteOrder.BIG_ENDIAN).putLong(x).array(),
-                { 0x28, 0x57, 0x35, 0x46},
-                { 0x46, 0x35, 0x57, 0x28 }
+                { 0x28, 0x57, 0x35, 0x46, 0x10},
+                { 0x10, 0x46, 0x35, 0x57, 0x28 }
         };
     }
 }

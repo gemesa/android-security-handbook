@@ -12,13 +12,22 @@ fn hex(bytes: &[u8]) -> String {
     format!("{{ {} }}", pairs.join(" "))
 }
 
-fn parse_hex(val: &str) -> Option<Vec<u8>> {
-    let mut bytes: Vec<u8> = Vec::new();
+// "285735461" --> ["28", "57", "35", "46", "1?"]
+fn parse_hex(val: &str) -> Option<Vec<String>> {
+    let mut pairs: Vec<String> = Vec::new();
     for i in (0..val.len()).step_by(2) {
-        let pair = val.get(i..i + 2)?;
-        bytes.push(u8::from_str_radix(pair, 16).ok()?);
+        let pair = val.get(i..(i + 2).min(val.len()))?;
+        if !pair.bytes().all(|b| b.is_ascii_hexdigit()) {
+            return None;
+        }
+        let pair = pair.to_ascii_lowercase();
+        if pair.len() == 1 {
+            pairs.push(format!("{pair}?"));
+        } else {
+            pairs.push(pair);
+        }
     }
-    Some(bytes)
+    Some(pairs)
 }
 
 /*
@@ -61,11 +70,11 @@ fn print_rule(val: &str) {
         print_string("int64_be", hex(&n.to_be_bytes()));
     }
 
-    if let Some(bytes) = parse_hex(val) {
-        let mut rev = bytes.clone();
+    if let Some(pairs) = parse_hex(val) {
+        let mut rev = pairs.clone();
         rev.reverse();
-        print_string("hex", hex(&bytes));
-        print_string("hex_rev", hex(&rev));
+        print_string("hex", format!("{{ {} }}", pairs.join(" ")));
+        print_string("hex_rev", format!("{{ {} }}", rev.join(" ")));
     }
 
     println!("    condition:");
