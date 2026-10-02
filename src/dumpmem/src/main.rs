@@ -18,6 +18,7 @@ use clap::Parser;
 #[command(version, about)]
 struct Args {
     /// Process names to dump, e.g. -p com.example.test -p com.example.test:worker1.
+    /// PIDs are also accepted: -p 1234.
     #[arg(short, long)]
     process: Vec<String>,
 
@@ -52,9 +53,12 @@ fn main() {
 fn run(names: &[String], out_base: &Path) -> io::Result<()> {
     let mut pids: Vec<i32> = Vec::new();
     for name in names {
-        let pid_raw = pidof(name)?.ok_or_else(|| {
-            io::Error::new(io::ErrorKind::NotFound, format!("{name} not running?"))
-        })?;
+        let pid_raw = match name.parse::<i32>() {
+            Ok(pid) => pid,
+            Err(_) => pidof(name)?.ok_or_else(|| {
+                io::Error::new(io::ErrorKind::NotFound, format!("{name} not running?"))
+            })?,
+        };
         pids.push(pid_raw);
     }
 
