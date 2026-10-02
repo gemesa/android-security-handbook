@@ -3,3 +3,5 @@ target/
 frida-server*
 __handlers__/
 memdump_*/
+.idea/
+.metals/
