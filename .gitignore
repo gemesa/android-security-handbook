@@ -2,3 +2,4 @@ target/
 *.yar
 frida-server*
 __handlers__/
+memdump_*/
