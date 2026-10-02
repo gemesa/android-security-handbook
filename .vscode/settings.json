@@ -2,5 +2,8 @@
   "rust-analyzer.linkedProjects": [
     "src/dumpmem/Cargo.toml",
     "src/mkrule/Cargo.toml"
-  ]
+  ],
+  "files.watcherExclude": {
+    "**/target/**": true
+  }
 }
