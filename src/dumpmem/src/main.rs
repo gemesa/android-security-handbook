@@ -5,7 +5,7 @@ use std::{
     process::exit,
 };
 
-use std::sync::atomic::{AtomicI32, Ordering};
+use std::sync::Mutex;
 
 use nix::sys::signal::{Signal, kill};
 use nix::unistd::Pid;
@@ -17,58 +17,57 @@ use clap::Parser;
 #[derive(Parser)]
 #[command(version, about)]
 struct Args {
-    /// Package name to dump, e.g. com.example.com.
+    /// Process names to dump, e.g. -p com.example.test -p com.example.test:worker1.
     #[arg(short, long)]
-    package: String,
+    process: Vec<String>,
 
     /// Output directory. The output is written to <output>/memdump_<pid>/.
     #[arg(short, long, default_value = "/data/local/tmp")]
     output: PathBuf,
 }
 
-static STOPPED_PID: AtomicI32 = AtomicI32::new(-1);
+static STOPPED_PIDS: Mutex<Vec<i32>> = Mutex::new(Vec::new());
 
 // Resume during cleanup whatever happens.
-struct Resumer(Pid);
+struct Resumer(Vec<Pid>);
 impl Drop for Resumer {
     fn drop(&mut self) {
-        println!("Resuming the app...");
-        let _ = kill(self.0, Signal::SIGCONT);
-        STOPPED_PID.store(-1, Ordering::SeqCst);
+        let raw: Vec<i32> = self.0.iter().map(|p| p.as_raw()).collect();
+        println!("Resuming PIDs: {raw:?}");
+        for &p in &self.0 {
+            _ = kill(p, Signal::SIGCONT);
+        }
+        STOPPED_PIDS.lock().unwrap().clear();
     }
 }
 
 fn main() {
     let args = Args::parse();
-    if let Err(e) = run(&args.package, &args.output) {
+    if let Err(e) = run(&args.process, &args.output) {
         eprintln!("error: {e}");
         exit(1);
     }
 }
 
-fn run(name: &str, out_base: &Path) -> io::Result<()> {
-    let pid_raw =
-        pidof(name)?.ok_or_else(|| io::Error::new(io::ErrorKind::NotFound, "app not running?"))?;
-    let pid = Pid::from_raw(pid_raw);
-    println!("Found PID: {pid_raw}");
+fn run(names: &[String], out_base: &Path) -> io::Result<()> {
+    let mut pids: Vec<i32> = Vec::new();
+    for name in names {
+        let pid_raw = pidof(name)?.ok_or_else(|| {
+            io::Error::new(io::ErrorKind::NotFound, format!("{name} not running?"))
+        })?;
+        pids.push(pid_raw);
+    }
 
-    // output0 = <output>/memdump_<pid>/bin/*.bin
-    // output1 = <output>/memdump_<pid>/dumpmem.log
-    let out = out_base.join(format!("memdump_{pid_raw}"));
-    let bin = out.join("bin");
-    let log_path = out.join("dumpmem.log");
-    fs::create_dir_all(&bin)?;
-    let mut log = File::create(&log_path)?;
+    println!("Found PIDs: {pids:?}");
 
     // https://crates.io/crates/ctrlc
-    // https://doc.rust-lang.org/std/sync/atomic/enum.Ordering.html
-    // We use the scrictest option for now (`SeqCst`), just to be sure.
     ctrlc::set_handler(move || {
-        let p = STOPPED_PID.load(Ordering::SeqCst);
-        if p >= 0 {
-            println!("Resuming the app...");
-            let _ = kill(Pid::from_raw(p), Signal::SIGCONT);
+        let stopped = STOPPED_PIDS.lock().unwrap();
+        println!("Resuming PIDs: {stopped:?}");
+        for &p in stopped.iter() {
+            _ = kill(Pid::from_raw(p), Signal::SIGCONT);
         }
+
         // https://man7.org/linux/man-pages/man7/signal.7.html
         // https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html
         // 128 + SIGINT = 130
@@ -76,44 +75,57 @@ fn run(name: &str, out_base: &Path) -> io::Result<()> {
     })
     .expect("failed to install Ctrl+C handler");
 
-    STOPPED_PID.store(pid_raw, Ordering::SeqCst);
-    let _resumer = Resumer(pid);
-    println!("Stopping the app...");
-    kill(pid, Signal::SIGSTOP)?;
+    *STOPPED_PIDS.lock().unwrap() = pids.clone();
 
-    let maps = fs::read_to_string(format!("/proc/{pid_raw}/maps"))?;
-    // Good practice: use write_all for bytes we already have.
-    log.write_all(maps.as_bytes())?;
-
-    println!("Dumping rw-p regions...");
-    let mut mem = File::open(format!("/proc/{pid_raw}/mem"))?;
-
-    // 55fc5b37a000-55fc5b425000 rw-p 00000000 00:00 0    [heap]
-    // 7fcd00021000-7fcd04000000 ---p 00000000 00:00 0
-    // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.filter_map
-    for region in maps.lines().filter_map(parse_region) {
-        let (start, end) = region;
-        writeln!(log, "{start:x}-{end:x}")?;
-
-        let len = (end - start) as usize;
-        let mut buf = vec![0; len];
-
-        // Straight to the region and read it.
-        mem.seek(SeekFrom::Start(start))?;
-        match mem.read_exact(&mut buf) {
-            Ok(()) => {
-                let path = bin.join(format!("{start:x}-{end:x}.bin"));
-                fs::write(&path, &buf)?;
-                writeln!(log, "wrote {len} bytes -> {}", path.display())?;
-            }
-            Err(e) => {
-                writeln!(log, "skip {start:x}-{end:x}: {e}")?;
-            }
-        }
+    let _resumer = Resumer(pids.iter().map(|&p| Pid::from_raw(p)).collect());
+    println!("Stopping PIDs: {pids:?}");
+    for &p in &pids {
+        kill(Pid::from_raw(p), Signal::SIGSTOP)?;
     }
 
-    writeln!(log, "Done: {}", out.display())?;
-    println!("Done: {}", out.display());
+    for &pid_raw in &pids {
+        // output0 = <output>/memdump_<pid>/bin/*.bin
+        // output1 = <output>/memdump_<pid>/dumpmem.log
+        let out = out_base.join(format!("memdump_{pid_raw}"));
+        let bin = out.join("bin");
+        let log_path = out.join("dumpmem.log");
+        fs::create_dir_all(&bin)?;
+        let mut log = File::create(&log_path)?;
+
+        let maps = fs::read_to_string(format!("/proc/{pid_raw}/maps"))?;
+        // Good practice: use write_all for bytes we already have.
+        log.write_all(maps.as_bytes())?;
+
+        println!("Dumping rw-p regions...");
+        let mut mem = File::open(format!("/proc/{pid_raw}/mem"))?;
+
+        // 55fc5b37a000-55fc5b425000 rw-p 00000000 00:00 0    [heap]
+        // 7fcd00021000-7fcd04000000 ---p 00000000 00:00 0
+        // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.filter_map
+        for region in maps.lines().filter_map(parse_region) {
+            let (start, end) = region;
+            writeln!(log, "{start:x}-{end:x}")?;
+
+            let len = (end - start) as usize;
+            let mut buf = vec![0; len];
+
+            // Straight to the region and read it.
+            mem.seek(SeekFrom::Start(start))?;
+            match mem.read_exact(&mut buf) {
+                Ok(()) => {
+                    let path = bin.join(format!("{start:x}-{end:x}.bin"));
+                    fs::write(&path, &buf)?;
+                    writeln!(log, "wrote {len} bytes -> {}", path.display())?;
+                }
+                Err(e) => {
+                    writeln!(log, "skip {start:x}-{end:x}: {e}")?;
+                }
+            }
+        }
+
+        writeln!(log, "Done: {}", out.display())?;
+        println!("Done: {}", out.display());
+    }
 
     Ok(())
 }
