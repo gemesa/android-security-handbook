@@ -15,7 +15,7 @@ use clap::Parser;
 
 /// Dump the rw-p memory regions of an Android process.
 #[derive(Parser)]
-#[command(version, about)]
+#[command(version, about, arg_required_else_help = true)]
 struct Args {
     /// Process names to dump, e.g. -p com.example.test -p com.example.test:worker1.
     /// PIDs are also accepted: -p 1234.
