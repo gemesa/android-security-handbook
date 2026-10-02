@@ -14,20 +14,24 @@ Alternatively, [`r2`](https://book.rada.re/search/basic_searches.html) could be 
 
 ```
 $ cargo build --release
-$ target/release/mkrule 1234 > rule.yar
-$ yr scan rule.yar src/mkrule/test.bin -s
-searchmem src/mkrule/test.bin
-0x100:4:$ascii: 1234
-0x200:8:$utf16_le: 31 00 32 00 33 00 34 00
-0x300:8:$utf16_be: 00 31 00 32 00 33 00 34
-0x400:4:$int32_le: d2 04 00 00
-0x600:4:$int32_le: d2 04 00 00
-0x500:4:$int32_be: 00 00 04 d2
-0x704:4:$int32_be: 00 00 04 d2
-0x600:8:$int64_le: d2 04 00 00 00 00 00 00
-0x700:8:$int64_be: 00 00 00 00 00 00 04 d2
-0x800:2:$hex: 12 34
-0x900:2:$hex_rev: 34 12
+$ target/release/mkrule 28573546 > rule.yar
+$ yr scan rule.yar memdump_3585/bin -s
+searchmem memdump_3585/bin/2000000-e000000.bin
+0xdfc64:8:$ascii: 28573546
+0xdfd6c:16:$utf16_le: 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00
+0xdfd8d:16:$utf16_le: 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36 00
+0xdfd6b:16:$utf16_be: 00 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36
+0xdfd8c:16:$utf16_be: 00 32 00 38 00 35 00 37 00 33 00 35 00 34 00 36
+0xdfdac:4:$int32_le: 6a ff b3 01
+0xdfdcc:4:$int32_le: 6a ff b3 01
+0xdfdbc:4:$int32_be: 01 b3 ff 6a
+0xdfde8:4:$int32_be: 01 b3 ff 6a
+0xdfdcc:8:$int64_le: 6a ff b3 01 00 00 00 00
+0xdfde4:8:$int64_be: 00 00 00 00 01 b3 ff 6a
+0xdfdfc:4:$hex: 28 57 35 46
+0xdfe0c:4:$hex_rev: 46 35 57 28
+$ cat memdump_3585/dumpmem.log | grep -E "0*2000000-0*e000000 rw-p"
+02000000-0e000000 rw-p 00000000 00:00 0                                  [anon:dalvik-main space]
 ```
 
 ## Code

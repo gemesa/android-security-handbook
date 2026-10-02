@@ -20,26 +20,30 @@ $ adb push target/aarch64-linux-android/release/dumpmem /data/local/tmp/
 Phone:
 
 ```
-# ./dumpmem -p com.example.app
-Found PID: 13538
+# ps -ef | grep test                         
+u0_a217       3585   465 0 19:28:56 ?     00:00:01 com.example.test
+u0_a217       3604   465 0 19:28:56 ?     00:00:00 com.example.test:worker1
+u0_a217       3605   465 0 19:28:56 ?     00:00:00 com.example.test:worker2
+# ./dumpmem -p com.example.test
+Found PID: 3585
 Stopping the app...
 Dumping rw-p regions...
-Done: /data/local/tmp/memdump_13538
+Done: /data/local/tmp/memdump_3585
 Resuming the app...
-# ls memdump_13538/
+# ls memdump_3585 
 bin  dumpmem.log
-# ls memdump_13538/bin/ | head -n 5
-2000000-12000000.bin
-22000000-32000000.bin
-60f0f04000-60f0f06000.bin
-60f18ef000-60f19eb000.bin
-60f2d2a000-60f2d2c000.bin
-# head -n 5 memdump_13538/dumpmem.log
-02000000-12000000 rw-p 00000000 00:00 0                                  [anon:dalvik-main space]
-22000000-32000000 rw-p 00000000 00:00 0                                  [anon:dalvik-free list large object space]
-42000000-44000000 r--s 00000000 00:01 1043                               /memfd:jit-zygote-cache (deleted)
-44000000-46000000 r-xs 02000000 00:01 1043                               /memfd:jit-zygote-cache (deleted)
-46000000-48000000 r--s 00000000 00:01 1528                               /memfd:jit-cache (deleted)
+# ls memdump_3585/bin | head -n 5
+2000000-e000000.bin
+26000000-32000000.bin
+4a000000-4a002000.bin
+57e9108b0000-57e9108b1000.bin
+6ffb4000-702a0000.bin
+# head -n 5 memdump_3585/dumpmem.log 
+02000000-0e000000 rw-p 00000000 00:00 0                                  [anon:dalvik-main space]
+26000000-32000000 rw-p 00000000 00:00 0                                  [anon:dalvik-free list large object space]
+4a000000-4a002000 rw-p 00000000 00:00 0 
+4a002000-4c002000 r--s 00000000 00:01 1040                               /memfd:jit-zygote-cache (deleted)
+4c002000-4e002000 r-xs 02000000 00:01 1040                               [anon_shmem:dalvik-zygote-jit-code-cache]
 ```
 
 ## Code
