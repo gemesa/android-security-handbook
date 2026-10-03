@@ -27,7 +27,6 @@ $ su
 # ./frida-server-17.19.0-android-arm64 &
 # exit
 $ exit
-$ pipx install frida-tools
 $ frida-ps -U -a                     
  PID  Name             Identifier                             
 ----  ---------------  ---------------------------------------

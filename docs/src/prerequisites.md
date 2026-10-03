@@ -87,3 +87,37 @@ $ adb shell
 ```
 $ sudo dnf install pipx
 ```
+
+### `frida`
+
+Note: always use matching `frida` client and server versions.
+
+```
+$ pip install colorama prompt-toolkit pygments websockets
+$ pipx install frida-tools
+$ # or rebuild and pull the latest frida
+$ pipx reinstall frida-tools
+$ frida --version
+17.22.0
+$ wget https://github.com/frida/frida/releases/download/17.22.0/frida-server-17.22.0-android-arm64.xz
+```
+
+Build from source:
+
+- https://developer.android.com/ndk/downloads
+- https://github.com/android/ndk/wiki/Unsupported-Downloads
+
+```
+$ android sdk install "ndk;29.0.14206865"
+$ echo 'export ANDROID_NDK_ROOT=$ANDROID_HOME/ndk/29.0.14206865' >> ~/.zshrc
+$ git clone https://github.com/frida/frida.git
+$ git submodule update --init --recursive
+$ mkdir build-android-arm64
+$ cd build-android-arm64
+$ ../configure --enable-gadget --enable-server --host=android-arm64
+$ make
+$ mkdir build-android-x86_64
+$ cd build-android-x86_64
+$ ../configure --enable-gadget --enable-server --host=android-x86_64
+$ make
+```
