@@ -224,3 +224,8 @@ ANDROID_TZDATA_ROOT=/apex/com.android.tzdata \
 ANDROID_I18N_ROOT=/apex/com.android.i18n \
 ./ol0 -l 0.0.0.0:29436
 ```
+
+## Detection bypass
+
+- [`undetected-frida`](./prerequisites.md#frida)
+- https://codeshare.frida.re/@Q0120S/frida-detection-bypass/
