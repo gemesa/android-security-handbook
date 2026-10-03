@@ -102,7 +102,7 @@ $ frida --version
 $ wget https://github.com/frida/frida/releases/download/17.22.0/frida-server-17.22.0-android-arm64.xz
 ```
 
-Build from source:
+Build from source (original version):
 
 - https://developer.android.com/ndk/downloads
 - https://github.com/android/ndk/wiki/Unsupported-Downloads
@@ -121,3 +121,46 @@ $ cd build-android-x86_64
 $ ../configure --enable-gadget --enable-server --host=android-x86_64
 $ make
 ```
+
+Build from source (patched version):
+
+Same as above, except that the patches need to be applied first:
+
+```
+$ git clone git@github.com:gemesa/undetected-frida.git
+$ git switch dev
+$ ./apply-patches.sh ~/git-repos/frida ~/git-repos/undetected-frida              
+FRIDA_PREFIX=c7xz7rbrn75vc0k99mc6lvws929jezng
+SESSION_SERVICE=5b2030ada95a4ab3e64bd346b4e357b2
+Applying strongR-frida patches to subprojects/frida-core
+patching file lib/base/rpc.vala
+Hunk #1 succeeded at 36 (offset 19 lines).
+Hunk #2 succeeded at 96 with fuzz 2 (offset 26 lines).
+Hunk #3 succeeded at 125 (offset 26 lines).
+patching file server/server.vala
+Hunk #1 succeeded at 1 with fuzz 2.
+Hunk #2 succeeded at 52 (offset 2 lines).
+patching file src/linux/linux-host-session.vala
+Hunk #1 succeeded at 64 (offset -64 lines).
+patching file src/anti-anti-frida.py
+patching file src/anti-anti-frida.py
+Hunk #1 succeeded at 19 (offset 1 line).
+patching file src/adb.vala
+Hunk #1 succeeded at 1015 (offset 41 lines).
+patching file src/anti-anti-frida.py
+Hunk #1 succeeded at 19 with fuzz 1 (offset -8 lines).
+Applying florida patches to subprojects/frida-core
+patching file lib/base/linux.vala
+Hunk #1 succeeded at 124 with fuzz 1 (offset 23 lines).
+patching file src/frida-glue.c
+Hunk #1 succeeded at 56 (offset 16 lines).
+Applying florida patches to subprojects/frida-gum
+patching file gum/gum.c
+Hunk #1 succeeded at 302 (offset -2 lines).
+Applying rycoh99 patches to subprojects/frida-core
+patching file lib/gadget/gadget.vala
+Hunk #1 succeeded at 1703 (offset -59 lines).
+$ # build, see above
+```
+
+Alternatively: download the [prebuilt binaries](https://github.com/zer0def/undetected-frida/releases). Note: the following patches are applied: `strongR-frida florida rycoh99`.
