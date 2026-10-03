@@ -163,4 +163,19 @@ Hunk #1 succeeded at 1703 (offset -59 lines).
 $ # build, see above
 ```
 
+After build:
+
+```
+$ pip install lief
+$ python3 ~/git-repos/frida/subprojects/frida-core/src/anti-anti-frida.py ~/git-repos/frida/build-android-arm64/subprojects/frida-core/server/frida-server
+[*] Patch frida-agent: /home/gemesa/git-repos/frida/build-android-arm64/subprojects/frida-core/server/frida-server
+[*] Patch `frida` to `oQpgx``
+section=.rodata offset=0x163ef7 GLib-GIO -> OIG-biLG
+section=.rodata offset=0x14dfb8 GDBusProxy -> yxorPsuBDG
+section=.rodata offset=0x152bf3 GDBusProxy -> yxorPsuBDG
+[*] Patch `gum-js-loop` to `gQaRmYSLzev`
+[*] Patch `gmain` to `hurxN`
+[*] Patch `gdbus` to `gWhDG`
+```
+
 Alternatively: download the [prebuilt binaries](https://github.com/zer0def/undetected-frida/releases). Note: the following patches are applied: `strongR-frida florida rycoh99`.
