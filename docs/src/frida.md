@@ -228,4 +228,5 @@ ANDROID_I18N_ROOT=/apex/com.android.i18n \
 ## Detection bypass
 
 - [`undetected-frida`](./prerequisites.md#frida)
-- https://codeshare.frida.re/@Q0120S/frida-detection-bypass/
+- [MASTG-KNOW-0030](https://mas.owasp.org/MASTG/knowledge/android/MASVS-RESILIENCE/MASTG-KNOW-0030/)
+- [Project: Frida Detection Bypass](https://codeshare.frida.re/@Q0120S/frida-detection-bypass/)
