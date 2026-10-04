@@ -6,3 +6,4 @@ memdump_*/
 .idea/
 .metals/
 *.der
+*.pem
