@@ -3,7 +3,7 @@ name: Code
 on: [push]
 
 jobs:
-  check-format-and-build:
+  build-tools:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
