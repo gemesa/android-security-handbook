@@ -53,6 +53,9 @@ $ adb shell settings put global http_proxy 10.0.2.2:8080
 $ adb shell settings get global http_proxy
 10.0.2.2:8080
 
+# reset later
+$ adb shell settings put global http_proxy :0
+
 $ adb shell am force-stop com.example.test
 $ adb shell am start -n com.example.test/.MainActivity
 Starting: Intent { cmp=com.example.test/.MainActivity }
