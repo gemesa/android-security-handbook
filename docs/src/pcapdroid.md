@@ -27,7 +27,9 @@ $ cat /data/misc/user/0/cacerts-added/81c450f1.0 | openssl x509 -noout -subject 
 subject=CN=PCAPdroid CA, O=PCAPdroid
 issuer=CN=PCAPdroid CA, O=PCAPdroid
 $ mkdir -p -m 700 /data/local/tmp/ca-copy
+$ cp /apex/com.android.conscrypt/cacerts/* /data/local/tmp/ca-copy/
 $ cp /data/misc/user/0/cacerts-added/81c450f1.0 /data/local/tmp/ca-copy/
+
 # overlay the legacy dir
 $ mount -t tmpfs tmpfs /system/etc/security/cacerts
 $ cp /data/local/tmp/ca-copy/* /system/etc/security/cacerts/
