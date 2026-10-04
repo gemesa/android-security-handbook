@@ -7,6 +7,7 @@ This app can be used to test tools such as:
 - [`dumpmem`](./memory-dumping.md)
 - [`mkrule`](./memory-search.md)
 - [Burp](./burp.md)
+- [PCAPdroid](./pcapdroid.md)
 
 ## Usage
 

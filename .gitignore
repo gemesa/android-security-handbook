@@ -8,3 +8,5 @@ memdump_*/
 *.der
 *.pem
 *.apk
+*.pcap
+*.keylog
