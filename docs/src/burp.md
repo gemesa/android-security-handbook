@@ -100,7 +100,7 @@ $ frida -U -p 4914 -l cert-pin-bypass.js
 
 References:
 
-- https://httptoolkit.com/blog/android-14-install-system-ca-certificate/
-- https://source.android.com/docs/core/ota/modular-system/conscrypt
-- https://www.redfoxsec.com/blog/installing-burp-suites-ca-as-a-system-certificate-on-android
-- https://codeshare.frida.re/@silva95gustavo/okhttp3-certificate-pinner-bypass/
+- <https://httptoolkit.com/blog/android-14-install-system-ca-certificate/>
+- <https://source.android.com/docs/core/ota/modular-system/conscrypt>
+- <https://www.redfoxsec.com/blog/installing-burp-suites-ca-as-a-system-certificate-on-android>
+- <https://codeshare.frida.re/@silva95gustavo/okhttp3-certificate-pinner-bypass/>
