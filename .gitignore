@@ -5,3 +5,4 @@ __handlers__/
 memdump_*/
 .idea/
 .metals/
+*.der
