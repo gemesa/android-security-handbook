@@ -7,3 +7,4 @@ memdump_*/
 .metals/
 *.der
 *.pem
+*.apk
