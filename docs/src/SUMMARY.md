@@ -15,6 +15,10 @@
 - [Memory dumping](./memory-dumping.md)
 - [Memory search](./memory-search.md)
 
+# Network traffic inspection
+
+- [Burp](./burp.md)
+
 # Testing
 
 - [Test app](./test-app.md)
