@@ -96,7 +96,7 @@ $ frida -U -p 4914 -l cert-pin-bypass.js
 {{#include ../../src/frida/cert-pin-bypass.js}}
 ```
 
-![Burp proxy](../res/burp-proxy.png)
+![Burp proxy](res/burp-proxy.png)
 
 References:
 
