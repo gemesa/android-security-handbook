@@ -20,12 +20,13 @@ $ adb install PCAPdroid-mitm_v2.4_x86_64.apk
 
 ```
 
-PCAPdroid: Settings --> Enable TLS decryption
+PCAPdroid: Settings --> Enable TLS decryption (+ complete the setup guide)
 
 ```
 $ cat /data/misc/user/0/cacerts-added/81c450f1.0 | openssl x509 -noout -subject -issuer 
 subject=CN=PCAPdroid CA, O=PCAPdroid
 issuer=CN=PCAPdroid CA, O=PCAPdroid
+$ mkdir -p -m 700 /data/local/tmp/ca-copy
 $ cp /data/misc/user/0/cacerts-added/81c450f1.0 /data/local/tmp/ca-copy/
 # overlay the legacy dir
 $ mount -t tmpfs tmpfs /system/etc/security/cacerts
