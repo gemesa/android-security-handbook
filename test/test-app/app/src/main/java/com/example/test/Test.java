@@ -25,6 +25,12 @@ import okhttp3.Response;
 // https://github.com/lysine-dev/okhttp
 
 public class Test {
+    static {
+        System.loadLibrary("native-lib");
+    }
+
+    public static native String stringFromNative();
+
     private static byte[][] keep;
 
     // A simple HTTP Request & Response Service.

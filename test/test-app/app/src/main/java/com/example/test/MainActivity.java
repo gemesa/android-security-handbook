@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView resultText;
     private TextView certText;
 
+    private TextView jniText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         certText = findViewById(R.id.certText);
         Button fetchButton = findViewById(R.id.fetchButton);
         fetchButton.setOnClickListener(this::onFetchClicked);
+
+        jniText = findViewById(R.id.jniText);
+        jniText.setText(Test.stringFromNative());
     }
 
     private void onFetchClicked(View v) {

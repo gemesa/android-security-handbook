@@ -10,6 +10,17 @@ android {
         }
     }
 
+    // https://developer.android.com/reference/tools/gradle-api/9.4/com/android/build/api/dsl/ExternalNativeBuild
+    externalNativeBuild {
+        // Encapsulates your CMake build configurations.
+        // For ndk-build, instead use the ndkBuild block.
+        cmake {
+            // Specifies a path to your CMake build script that's
+            // relative to the build.gradle file.
+            path = file("src/main/cpp/CMakeLists.txt")
+        }
+    }
+
     defaultConfig {
         applicationId = "com.example.test"
         minSdk = 28
@@ -18,6 +29,15 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // https://developer.android.com/studio/projects/gradle-external-native-builds#kts
+        ndk {
+            // Specifies the ABI configurations of your native
+            // libraries Gradle should build and package with your app.
+            abiFilters += listOf("x86_64", "arm64-v8a")
+        }
+
+
     }
 
     buildTypes {
