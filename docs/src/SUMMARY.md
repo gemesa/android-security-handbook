@@ -9,6 +9,10 @@
 - [KernelSU](./kernelsu.md)
 - [Magisk](./magisk.md)
 
+# Static analysis
+
+- [`apktool`](apktool.md)
+
 # Dynamic analysis
 
 - [`frida`](./frida.md)

@@ -4,6 +4,7 @@
 
 This app can be used to test tools such as:
 
+- [`apktool`](./apktool.md)
 - [`dumpmem`](./memory-dumping.md)
 - [`mkrule`](./memory-search.md)
 - [Burp](./burp.md)

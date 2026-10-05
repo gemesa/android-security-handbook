@@ -179,3 +179,12 @@ section=.rodata offset=0x152bf3 GDBusProxy -> yxorPsuBDG
 ```
 
 Alternatively: download the [prebuilt binaries](https://github.com/zer0def/undetected-frida/releases). Note: the following patches are applied: `strongR-frida florida rycoh99`.
+
+## `apktool`
+
+```
+$ wget https://raw.githubusercontent.com/iBotPeaches/Apktool/refs/heads/main/scripts/linux/apktool
+$ wget -O apktool.jar https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar
+$ chmod +x apktool apktool.jar
+$ sudo mv apktool apktool.jar /usr/local/bin/
+```

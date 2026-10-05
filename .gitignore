@@ -10,3 +10,6 @@ memdump_*/
 *.apk
 *.pcap
 *.keylog
+*.jks
+*.idsig
+
