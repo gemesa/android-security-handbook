@@ -61,7 +61,7 @@ After startup install additional tools:
   - --> **CMake**
 
 References:
-- https://developer.android.com/studio/install.html#linux
+- <https://developer.android.com/studio/install.html#linux>
 
 ## Emulator
 
