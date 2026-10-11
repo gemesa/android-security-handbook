@@ -31,11 +31,11 @@ $ sudo udevadm trigger
 
 ## Android Studio
 
-Download [Android Studio](https://developer.android.com/studio) (`android-studio-quail1-patch2-linux.tar.gz`).
+Download [Android Studio](https://developer.android.com/studio) (`android-studio-rabbit1-linux.tar.gz`).
 
 ```
-$ sudo dnf install zlib.i686 ncurses-libs.i686 bzip2-libs.i686
-$ sudo tar -xzf android-studio-quail1-patch2-linux.tar.gz -C /opt/
+$ sudo dnf install zlib-ng-compat.i686 ncurses-libs.i686 bzip2-libs.i686
+$ sudo tar -xzf android-studio-rabbit1-linux.tar.gz -C /opt/
 $ sudo ln -sf /opt/android-studio/bin/studio /usr/local/bin/android-studio
 ```
 Note: check the Android SDK version of your phone and select the linker accordingly (e.g. `aarch64-linux-android36-clang`).
@@ -55,10 +55,13 @@ $ source ~/.zshrc
 ```
 
 After startup install additional tools:
-- **More Actions** --> **SDK Manager** --> **SDK Tools**
+- **Settings** --> **Languages & Frameworks** --> **Android SDK**
   - --> **NDK (Side by side)**
   - --> **Android SDK Command-line Tools (latest)**
   - --> **CMake**
+
+References:
+- https://developer.android.com/studio/install.html#linux
 
 ## Emulator
 
