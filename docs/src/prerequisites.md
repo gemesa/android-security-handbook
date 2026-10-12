@@ -91,7 +91,7 @@ $ adb shell
 $ sudo dnf install pipx
 ```
 
-### `frida`
+## `frida`
 
 Note: always use matching `frida` client and server versions.
 
