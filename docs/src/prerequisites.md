@@ -191,3 +191,31 @@ $ wget -O apktool.jar https://github.com/iBotPeaches/Apktool/releases/download/v
 $ chmod +x apktool apktool.jar
 $ sudo mv apktool apktool.jar /usr/local/bin/
 ```
+
+## Ghidra
+
+```
+$ curl -s "https://get.sdkman.io" | bash
+$ sdk install gradle
+$ sdk list java
+$ sdk install java 25.0.3-tem
+$ git clone https://github.com/NationalSecurityAgency/ghidra.git
+$ cd ghidra
+$ gradle -I gradle/support/fetchDependencies.gradle
+$ gradle assembleAll
+$ echo 'export PATH=$PATH:/home/gemesa/git-repos/ghidra/build/dist/ghidra_12.3_DEV' >> ~/.zshrc
+$ echo 'export PATH=$PATH:/home/gemesa/git-repos/ghidra/build/dist/ghidra_12.3_DEV/support' >> ~/.zshrc
+$ . ~/.zshrc
+$ ghidraRun
+```
+
+PyGhidra:
+
+```
+$ sudo dnf install python3-devel
+$ pip install pyghidra
+$ pip install ghidra-stubs
+```
+
+References:
+- <https://pypi.org/project/ghidra-stubs/>
