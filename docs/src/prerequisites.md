@@ -229,4 +229,4 @@ $ radare2/sys/install.sh
 ```
 
 References:
-- https://github.com/radareorg/radare2/blob/master/INSTALL.md
+- <https://github.com/radareorg/radare2/blob/master/INSTALL.md>
