@@ -219,3 +219,14 @@ $ pip install ghidra-stubs
 
 References:
 - <https://pypi.org/project/ghidra-stubs/>
+
+## radare2
+
+```
+$ git clone https://github.com/radareorg/radare2
+$ sudo dnf install patch
+$ radare2/sys/install.sh
+```
+
+References:
+- https://github.com/radareorg/radare2/blob/master/INSTALL.md
