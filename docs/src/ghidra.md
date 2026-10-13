@@ -42,13 +42,15 @@ for f in islice(currentProgram.getFunctionManager().getFunctions(True), 5):
 ```
 
 ```
+$ apktool d test/test-app/app/build/outputs/apk/debug/app-debug.apk -o app-debug
+...
 $ mkdir -p /tmp/ghidra_projects
-$ pyghidraRun -H /tmp/ghidra_projects headless -import ~/projects/ls -postScript functions.py -scriptPath ~/projects -deleteProject | grep -E '^##'
-## 0010033c: _init
-## 00100a00: __ctype_toupper_loc
-## 00100a10: getenv
-## 00100a20: cap_to_text
-## 00100a30: sigprocmask
+$ pyghidraRun -H /tmp/ghidra_projects headless -import app-debug/lib/arm64-v8a/libnative-lib.so -postScript functions.py -scriptPath ~/projects -deleteProject | grep -E '^##'
+## 00100660: _FINI_1
+## 00100670: FUN_00100670
+## 00100678: _FINI_0
+## 00100680: FUN_00100680
+## 00100694: FUN_00100694
 ```
 
 References:
