@@ -13,6 +13,7 @@
 
 - [`apktool`](apktool.md)
 - [Ghidra](./ghidra.md)
+- [radare2](./radare2.md)
 
 # Dynamic analysis
 
