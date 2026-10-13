@@ -218,6 +218,7 @@ $ pip install ghidra-stubs
 ```
 
 References:
+- <https://github.com/NationalSecurityAgency/ghidra#build>
 - <https://pypi.org/project/ghidra-stubs/>
 
 ## radare2
