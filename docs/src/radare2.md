@@ -21,9 +21,9 @@ GUI:
 CLI:
 
 ```
-$ apktool d test/test-app/app/build/outputs/apk/debug/app-debug.apk -o app-debug.apk
+$ apktool d test/test-app/app/build/outputs/apk/debug/app-debug.apk -o app-debug
 ...
-$ r2 -q -c 'aaa; afl' app-debug.apk/lib/arm64-v8a/libnative-lib.so | head -5 
+$ r2 -q -c 'aaa; afl' app-debug/lib/arm64-v8a/libnative-lib.so | head -5 
 HINT: Relocs not applied, some references may not resolve: use -e bin.relocs.apply=true
 INFO: Analyze all flags starting with sym. and entry0 (aa)
 INFO: Analyze imports (af@@@i)
