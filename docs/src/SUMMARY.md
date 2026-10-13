@@ -12,6 +12,7 @@
 # Static analysis
 
 - [`apktool`](apktool.md)
+- [Ghidra](./ghidra.md)
 
 # Dynamic analysis
 
