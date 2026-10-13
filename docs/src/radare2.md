@@ -21,7 +21,9 @@ GUI:
 CLI:
 
 ```
-$ r2 -q -c 'aaa; afl' ~/projects/ls | head -5
+$ apktool d test/test-app/app/build/outputs/apk/debug/app-debug.apk -o app-debug.apk
+...
+$ r2 -q -c 'aaa; afl' app-debug.apk/lib/arm64-v8a/libnative-lib.so | head -5 
 HINT: Relocs not applied, some references may not resolve: use -e bin.relocs.apply=true
 INFO: Analyze all flags starting with sym. and entry0 (aa)
 INFO: Analyze imports (af@@@i)
@@ -34,15 +36,19 @@ INFO: Analyze function calls (aac)
 INFO: Analyze len bytes of instructions for references (aar)
 INFO: Finding and parsing C++ vtables (avrr)
 INFO: Analyzing methods (af @@ method.*)
+INFO: Finding function preludes (aap)
+INFO: Emulate functions to find computed references (aaef)
 INFO: Recovering local variables (afva@@@F)
 INFO: Type matching analysis for all functions (aaft)
 INFO: Propagate noreturn information (aanr)
 INFO: Use -AA or aaaa to perform additional experimental analysis
-0x00000a00    1     10 sym.imp.__ctype_toupper_loc
-0x00000a10    1     10 sym.imp.getenv
-0x00000a20    1     10 sym.imp.cap_to_text
-0x00000a30    1     10 sym.imp.sigprocmask
-0x00000a40    1     10 sym.imp.__snprintf_chk
+INFO: Finding xrefs in noncode sections (e anal.in=io.maps.x; aav)
+WARN: Skipping aav because base address is zero. Use -B 0x800000 or aav0
+0x00000750    1     16 sym.imp.__cxa_finalize
+0x00000760    1     16 sym.imp.__cxa_atexit
+0x00000770    1     16 sym.imp.__register_atfork
+0x00000660    1     16 entry0
+0x000006c0    1     48 sym.Java_com_example_test_Test_stringFromNative
 ```
 
 References:
