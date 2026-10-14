@@ -6,6 +6,7 @@
 
 # Rooting
 
+- [Samsung S10e](./s10e.md)
 - [KernelSU](./kernelsu.md)
 - [Magisk](./magisk.md)
 
