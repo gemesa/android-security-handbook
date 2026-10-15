@@ -10,6 +10,11 @@
   - `wget https://dl.google.com/dl/android/aosp/bluejay-cp1a.260405.005-factory-1267628c.zip`
 
 ```
+$ adb reboot bootloader
+$ fastboot flashing unlock
+```
+
+```
 $ unzip bluejay-cp1a.260405.005-factory-1267628c.zip           
 Archive:  bluejay-cp1a.260405.005-factory-1267628c.zip
    creating: bluejay-cp1a.260405.005/
@@ -64,13 +69,6 @@ $ fastboot reboot
 References:
 - https://github.com/KernelSU-Next/KernelSU-Next/releases
 
-
-### Unlock the bootloader
-
-```
-$ adb reboot bootloader
-$ fastboot flashing unlock
-```
 
 ### Install KernelSU-Next manager
 
