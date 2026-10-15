@@ -113,3 +113,45 @@ $ adb shell
 bluejay:/ $ su
 bluejay:/ #
 ```
+
+## Magisk
+
+References:
+- https://github.com/topjohnwu/magisk
+
+### Install Magisk
+
+```
+$ wget https://github.com/topjohnwu/Magisk/releases/download/v30.7/Magisk-v30.7.apk
+$ adb install Magisk-v30.7.apk
+```
+
+### Patch boot.img
+
+```
+$ adb push boot.img /sdcard/Download/
+```
+
+Magisk --> Install --> Select and patch a file --> LET'S GO
+
+```
+$ adb pull /sdcard/Download/magisk_patched-30700_xpRGa.img
+```
+
+### Flash boot.img
+
+```
+$ adb reboot bootloader
+$ fastboot flash boot magisk_patched-30700_xpRGa.img
+$ fastboot reboot
+```
+
+### Enable su
+
+```
+$ adb shell
+bluejay:/ $ su
+bluejay:/ #
+```
+
+Magisk --> grant
