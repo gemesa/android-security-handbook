@@ -7,7 +7,7 @@
 # Rooting
 
 - [Samsung S10e](./s10e.md)
-- [KernelSU](./kernelsu.md)
+- [KernelSU/KernelSU-Next](./kernelsu.md)
 - [Magisk](./magisk.md)
 
 # Static analysis
