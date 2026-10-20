@@ -5,9 +5,9 @@
 - enable the following in developer options:
    - OEM unlocking
    - USB debugging
-- check: Settings --> ABout phone --> Build number: CP1A.260405.005
+- check: Settings --> ABout phone --> Build number: CP3A.261005.002.A1
   - https://developers.google.com/android/images#bluejay
-  - `wget https://dl.google.com/dl/android/aosp/bluejay-cp1a.260405.005-factory-1267628c.zip`
+  - `wget https://dl.google.com/dl/android/aosp/bluejay-cp3a.261005.002.a1-factory-79d88414.zip`
 
 ```
 $ adb reboot bootloader
@@ -15,36 +15,37 @@ $ fastboot flashing unlock
 ```
 
 ```
-$ unzip bluejay-cp1a.260405.005-factory-1267628c.zip           
-Archive:  bluejay-cp1a.260405.005-factory-1267628c.zip
-   creating: bluejay-cp1a.260405.005/
-  inflating: bluejay-cp1a.260405.005/flash-all.bat  
- extracting: bluejay-cp1a.260405.005/image-bluejay-cp1a.260405.005.zip  
-  inflating: bluejay-cp1a.260405.005/d3m2.ec.bin  
-  inflating: bluejay-cp1a.260405.005/proto11.ec.bin  
-  inflating: bluejay-cp1a.260405.005/bootloader-bluejay-bluejay-16.4-14548185.img  
-  inflating: bluejay-cp1a.260405.005/evt.ec.bin  
-  inflating: bluejay-cp1a.260405.005/flash-base.sh  
-  inflating: bluejay-cp1a.260405.005/flash-all.sh  
-  inflating: bluejay-cp1a.260405.005/radio-bluejay-g5123b-145971-260109-b-14688209.img
-$ unzip bluejay-cp1a.260405.005/image-bluejay-cp1a.260405.005.zip
-Archive:  bluejay-cp1a.260405.005/image-bluejay-cp1a.260405.005.zip
+$ unzip bluejay-cp3a.261005.002.a1-factory-79d88414.zip                
+Archive:  bluejay-cp3a.261005.002.a1-factory-79d88414.zip
+   creating: bluejay-cp3a.261005.002.a1/
+ extracting: bluejay-cp3a.261005.002.a1/image-bluejay-cp3a.261005.002.a1.zip  
+  inflating: bluejay-cp3a.261005.002.a1/bootloader-bluejay-bluejay-17.0-15681480.img  
+  inflating: bluejay-cp3a.261005.002.a1/radio-bluejay-g5123b-145971-260721-b-15910359.img  
+  inflating: bluejay-cp3a.261005.002.a1/flash-all.bat  
+  inflating: bluejay-cp3a.261005.002.a1/d3m2.ec.bin  
+  inflating: bluejay-cp3a.261005.002.a1/proto11.ec.bin  
+  inflating: bluejay-cp3a.261005.002.a1/evt.ec.bin  
+  inflating: bluejay-cp3a.261005.002.a1/flash-base.sh  
+  inflating: bluejay-cp3a.261005.002.a1/flash-all.sh
+$ cd bluejay-cp3a.261005.002.a1
+$ unzip image-bluejay-cp3a.261005.002.a1.zip 
+Archive:  image-bluejay-cp3a.261005.002.a1.zip
   inflating: android-info.txt        
   inflating: fastboot-info.txt       
- extracting: boot.img                
-  inflating: dtbo.img                
-  inflating: vendor_boot.img         
-  inflating: system.img              
-  inflating: vendor.img              
   inflating: product.img             
+  inflating: dtbo.img                
+  inflating: vendor.img              
   inflating: system_ext.img          
-  inflating: vendor_dlkm.img         
   inflating: system_other.img        
-  inflating: pvmfw.img               
+  inflating: system.img              
+  inflating: boot.img                
   inflating: vbmeta_system.img       
-  inflating: vbmeta_vendor.img       
-  inflating: vbmeta.img              
   inflating: super_empty.img         
+  inflating: vendor_dlkm.img         
+  inflating: pvmfw.img               
+  inflating: vbmeta_vendor.img       
+  inflating: vendor_boot.img         
+  inflating: vbmeta.img              
   inflating: abl.img                 
   inflating: bl1.img                 
   inflating: bl2.img                 
