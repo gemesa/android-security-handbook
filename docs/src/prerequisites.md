@@ -231,3 +231,22 @@ $ radare2/sys/install.sh
 
 References:
 - <https://github.com/radareorg/radare2/blob/master/INSTALL.md>
+
+## VirtualBox
+
+```
+$ sudo dnf install gcc make perl kernel-devel kernel-headers
+$ wget https://www.virtualbox.org/download/oracle_vbox_2016.asc
+$ sudo rpm --import oracle_vbox_2016.asc
+$ wget https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+$ sudo mv virtualbox.repo /etc/yum.repos.d/
+$ sudo dnf install VirtualBox-7.2
+$ sudo usermod -a -G vboxusers $USER
+```
+
+Fingerprint:
+
+```
+B9F8 D658 297A F3EF C18D  5CDF A2F6 83C5 2980 AECF
+Oracle Corporation (VirtualBox archive signing key) <info@virtualbox.org>
+```
