@@ -250,3 +250,26 @@ Fingerprint:
 B9F8 D658 297A F3EF C18D  5CDF A2F6 83C5 2980 AECF
 Oracle Corporation (VirtualBox archive signing key) <info@virtualbox.org>
 ```
+
+### Guest additions
+
+Fedora:
+
+```
+$ sudo dnf install virtualbox-guest-additions
+```
+
+Ubuntu:
+
+Devices --> Insert Guest Additions CD image...
+
+```
+$ sudo apt autoremove virtualbox-guest-utils virtualbox-guest-x11 -y
+$ sudo apt install build-essential dkms linux-headers-$(uname -r) perl bzip2 
+$ findmnt | grep -i vbox
+$ cd /run/media/gemesa/VBox_GAs_7.2.22
+$ sudo ./VBoxLinuxAdditions.run
+$ reboot
+```
+
+Settings --> Storage --> remove CD attachment
