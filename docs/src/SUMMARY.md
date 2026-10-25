@@ -28,6 +28,10 @@
 - [Burp](./burp.md)
 - [PCAPdroid](./pcapdroid.md)
 
+# Obfuscation
+
+- [R8](./r8.md)
+
 # Testing
 
 - [Test app](./test-app.md)

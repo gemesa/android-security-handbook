@@ -43,7 +43,8 @@ android {
     buildTypes {
         release {
             optimization {
-                enable = false
+                // https://developer.android.com/topic/performance/app-optimization/enable-app-optimization#overview
+                enable = true
             }
         }
     }
