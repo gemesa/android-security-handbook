@@ -14,6 +14,7 @@
 # Static analysis
 
 - [`apktool`](apktool.md)
+- [JADX](./jadx.md)
 - [Ghidra](./ghidra.md)
 - [radare2](./radare2.md)
 
