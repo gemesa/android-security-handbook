@@ -192,6 +192,24 @@ $ chmod +x apktool apktool.jar
 $ sudo mv apktool apktool.jar /usr/local/bin/
 ```
 
+## JADX
+
+```
+$ git clone https://github.com/skylot/jadx.git
+$ cd jadx
+$ ./gradlew dist
+$ sudo cp build/jadx/bin/jadx /usr/local/bin/
+$ sudo cp build/jadx/bin/jadx-gui /usr/local/bin/
+$ sudo cp build/jadx/lib/jadx-dev-all.jar /usr/local/lib/
+```
+
+Or use flatpak instead:
+
+```
+$ flatpak install flathub com.github.skylot.jadx
+$ flatpak run com.github.skylot.jadx
+```
+
 ## Ghidra
 
 ```
