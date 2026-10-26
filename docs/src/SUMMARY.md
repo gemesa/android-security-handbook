@@ -32,6 +32,7 @@
 # Obfuscation
 
 - [R8](./r8.md)
+- [obfuscator-llvm](./obfuscator-llvm.md)
 
 # Testing
 
