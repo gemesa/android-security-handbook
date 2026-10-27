@@ -25,7 +25,7 @@ $ pip install .
 $ unzip -d database -q database/3_variables_constants_7_nodes.txt.zip
 ```
 
-The test binary is generated with [obfuscator-llvm](https://shadowshell.io/android-security-handbook/obfuscator-llvm.html#usage):
+The test binary is generated with [obfuscator-llvm](./obfuscator-llvm.md#usage):
 
 ```c
 undefined8 main(int param_1,long param_2)
