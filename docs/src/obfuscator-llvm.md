@@ -56,14 +56,27 @@ $LLVM/clang $T -fuse-ld=lld test_sub_a64_obf.o -o test_sub_a64_obf
 file test_sub_a64_obf
 ```
 
+```c
+$ cat test_sub.c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char **argv) {
+  int a = argc > 1 ? atoi(argv[1]) : 7;
+  int b = argc > 2 ? atoi(argv[2]) : 3;
+  printf("or=%d", a | b);
+  return 0;
+}
 ```
-$ cat test_sub_a64.ll 
+
+```
+$ cat test_sub_a64.ll
 ; ModuleID = 'test_sub.c'
 source_filename = "test_sub.c"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i8:8:32-i16:16:32-i64:64-i128:128-n32:64-S128-Fn32"
 target triple = "aarch64-unknown-linux-gnu"
 
-@.str = private unnamed_addr constant [35 x i8] c"add=%d sub=%d and=%d or=%d xor=%d\0A\00", align 1
+@.str = private unnamed_addr constant [6 x i8] c"or=%d\00", align 1
 
 ; Function Attrs: nofree nounwind uwtable
 define dso_local noundef i32 @main(i32 noundef %0, ptr nofree noundef readonly captures(none) %1) local_unnamed_addr #0 {
@@ -91,12 +104,8 @@ define dso_local noundef i32 @main(i32 noundef %0, ptr nofree noundef readonly c
 
 17:                                               ; preds = %9, %12
   %18 = phi i32 [ %16, %12 ], [ 3, %9 ]
-  %19 = add nsw i32 %18, %10
-  %20 = sub nsw i32 %10, %18
-  %21 = and i32 %18, %10
-  %22 = or i32 %18, %10
-  %23 = xor i32 %18, %10
-  %24 = tail call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str, i32 noundef %19, i32 noundef %20, i32 noundef %21, i32 noundef %22, i32 noundef %23)
+  %19 = or i32 %18, %10
+  %20 = tail call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str, i32 noundef %19)
   ret i32 0
 }
 
@@ -137,6 +146,35 @@ attributes #3 = { nounwind }
 !19 = distinct !{null}
 ```
 
+```c
+undefined8 main(int param_1,long param_2)
+
+{
+  uint uVar1;
+  uint uVar2;
+  long lVar3;
+  
+  if (param_1 < 2) {
+    uVar1 = 7;
+  }
+  else {
+    lVar3 = strtol(*(char **)(param_2 + 8),(char **)0x0,10);
+    uVar1 = (uint)lVar3;
+  }
+  if (param_1 < 3) {
+    uVar2 = 3;
+  }
+  else {
+    lVar3 = strtol(*(char **)(param_2 + 0x10),(char **)0x0,10);
+    uVar2 = (uint)lVar3;
+  }
+  printf("or=%d",((uVar2 ^ 0xffffffff) & 0xef27f53c | uVar2 & 0x10d80ac3) ^
+                 ((uVar1 ^ 0xffffffff) & 0xef27f53c | uVar1 & 0x10d80ac3) |
+                 (~uVar2 | uVar1 ^ 0xffffffff) ^ 0xffffffff);
+  return 0;
+}
+```
+
 ```
 $ cat test_sub_a64_obf.ll
 ; ModuleID = 'test_sub_a64.ll'
@@ -144,7 +182,7 @@ source_filename = "test_sub.c"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i8:8:32-i16:16:32-i64:64-i128:128-n32:64-S128-Fn32"
 target triple = "aarch64-unknown-linux-gnu"
 
-@.str = private unnamed_addr constant [35 x i8] c"add=%d sub=%d and=%d or=%d xor=%d\0A\00", align 1
+@.str = private unnamed_addr constant [6 x i8] c"or=%d\00", align 1
 
 ; Function Attrs: nofree nounwind uwtable
 define dso_local noundef i32 @main(i32 noundef %0, ptr nofree noundef readonly captures(none) %1) local_unnamed_addr #0 {
@@ -172,46 +210,23 @@ define dso_local noundef i32 @main(i32 noundef %0, ptr nofree noundef readonly c
 
 17:                                               ; preds = %12, %9
   %18 = phi i32 [ %16, %12 ], [ 3, %9 ]
-  %19 = sub i32 0, %18
-  %20 = sub i32 0, %10
-  %21 = add i32 %19, %20
-  %22 = sub i32 0, %21
-  %23 = add nsw i32 %18, %10
-  %24 = sub i32 0, %18
-  %25 = add i32 %10, %24
-  %26 = sub nsw i32 %10, %18
-  %27 = xor i32 %10, -1
-  %28 = xor i32 %18, %27
-  %29 = and i32 %28, %18
-  %30 = and i32 %18, %10
-  %31 = xor i32 %18, -1
-  %32 = xor i32 %10, -1
-  %33 = xor i32 385505941, -1
-  %34 = and i32 %31, 385505941
-  %35 = and i32 %18, %33
-  %36 = and i32 %32, 385505941
-  %37 = and i32 %10, %33
-  %38 = or i32 %34, %35
-  %39 = or i32 %36, %37
-  %40 = xor i32 %38, %39
-  %41 = or i32 %31, %32
-  %42 = xor i32 %41, -1
-  %43 = or i32 385505941, %33
-  %44 = and i32 %42, %43
-  %45 = or i32 %40, %44
-  %46 = or i32 %18, %10
-  %47 = xor i32 %18, -1
-  %48 = and i32 473511061, %47
-  %49 = xor i32 473511061, -1
-  %50 = and i32 %18, %49
-  %51 = xor i32 %10, -1
-  %52 = and i32 %51, 473511061
-  %53 = and i32 %10, %49
-  %54 = or i32 %48, %50
-  %55 = or i32 %52, %53
-  %56 = xor i32 %54, %55
-  %57 = xor i32 %18, %10
-  %58 = tail call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str, i32 noundef %22, i32 noundef %25, i32 noundef %29, i32 noundef %45, i32 noundef %56)
+  %19 = xor i32 %18, -1
+  %20 = xor i32 %10, -1
+  %21 = xor i32 -282593988, -1
+  %22 = and i32 %19, -282593988
+  %23 = and i32 %18, %21
+  %24 = and i32 %20, -282593988
+  %25 = and i32 %10, %21
+  %26 = or i32 %22, %23
+  %27 = or i32 %24, %25
+  %28 = xor i32 %26, %27
+  %29 = or i32 %19, %20
+  %30 = xor i32 %29, -1
+  %31 = or i32 -282593988, %21
+  %32 = and i32 %30, %31
+  %33 = or i32 %28, %32
+  %34 = or i32 %18, %10
+  %35 = tail call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str, i32 noundef %33)
   ret i32 0
 }
 
