@@ -34,6 +34,10 @@
 - [R8](./r8.md)
 - [obfuscator-llvm](./obfuscator-llvm.md)
 
+# Deobfuscation
+
+- [msynth](./msynth.md)
+
 # Testing
 
 - [Test app](./test-app.md)
