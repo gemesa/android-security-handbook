@@ -10,6 +10,7 @@ Obfuscate native code with LLVM IR level obfuscation passes.
 
 Supported obfuscation passes:
 
+- [Bogus control flow](https://github.com/eshard/obfuscator-llvm/blob/main/bogus/BogusControlFlow.cpp)
 - [CFG flattening](https://github.com/eshard/obfuscator-llvm/blob/main/flattening/Flattening.cpp)
 - [Basic block splitting](https://github.com/eshard/obfuscator-llvm/blob/main/split/SplitBasicBlocks.cpp)
 - [String encryption](https://github.com/eshard/obfuscator-llvm/blob/main/string/StringObfuscation.cpp)
