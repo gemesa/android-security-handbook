@@ -6,14 +6,14 @@ Obfuscate native code with LLVM IR level obfuscation passes.
 
 ## Explanation
 
-Maintained version of the original [obfuscator-llvm](https://github.com/obfuscator-llvm/obfuscator).
+[Maintained version](https://github.com/eshard/obfuscator-llvm) of the original [obfuscator-llvm](https://github.com/obfuscator-llvm/obfuscator).
 
 Supported obfuscation passes:
 
-- CFG flattening
-- Basic block splitting
-- String encryption
-- Instruction substitution
+- [CFG flattening](https://github.com/eshard/obfuscator-llvm/blob/main/flattening/Flattening.cpp)
+- [Basic block splitting](https://github.com/eshard/obfuscator-llvm/blob/main/split/SplitBasicBlocks.cpp)
+- [String encryption](https://github.com/eshard/obfuscator-llvm/blob/main/string/StringObfuscation.cpp)
+- [Instruction substitution](https://github.com/eshard/obfuscator-llvm/blob/main/substitution/Substitution.cpp)
 
 ## Usage
 
