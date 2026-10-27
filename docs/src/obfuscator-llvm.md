@@ -57,7 +57,6 @@ file test_sub_a64_obf
 ```
 
 ```c
-$ cat test_sub.c
 #include <stdio.h>
 #include <stdlib.h>
 
