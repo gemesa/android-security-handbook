@@ -36,6 +36,7 @@
 
 # Deobfuscation
 
+- [Ghidra](./ghidra-deobf.md)
 - [msynth](./msynth.md)
 
 # Testing
