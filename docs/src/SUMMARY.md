@@ -38,7 +38,7 @@
 
 - [Ghidra - BCF](./ghidra-deobf-bcf.md)
 - [Ghidra - encrypted strings](./ghidra-deobf-enc-str.md)
-- [msynth](./msynth.md)
+- [msynth - MBA](./msynth.md)
 
 # Testing
 
