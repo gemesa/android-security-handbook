@@ -36,7 +36,8 @@
 
 # Deobfuscation
 
-- [Ghidra](./ghidra-deobf.md)
+- [Ghidra - BCF](./ghidra-deobf-bcf.md)
+- [Ghidra - encrypted strings](./ghidra-deobf-enc-str.md)
 - [msynth](./msynth.md)
 
 # Testing
