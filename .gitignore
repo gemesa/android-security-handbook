@@ -7,6 +7,9 @@ memdump_*/
 .metals/
 *.der
 *.pem
+app-debug*
+app-release*
+__pycache__
 *.apk
 *.pcap
 *.keylog
