@@ -6,6 +6,8 @@ Deobfuscate [omvll](https://github.com/open-obfuscator/o-mvll/blob/main/src/pass
 
 ## Usage
 
+Prereqs: build an [obfuscated APK](./o-mvll.md#usage).
+
 Script Manager --> Manage Script Directories --> add/enable `$USER_HOME/ghidra_scripts`
 
 ```
