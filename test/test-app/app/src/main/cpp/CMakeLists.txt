@@ -12,6 +12,8 @@ if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OMVLL}")
 endif()
 
+project(test)
+
 # Specifies a library name, specifies whether the library is STATIC or
 # SHARED, and provides relative paths to the source code. You can
 # define multiple libraries by adding multiple add_library() commands,
