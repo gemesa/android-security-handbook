@@ -7,8 +7,10 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 set(OMVLL "-fpass-plugin=/home/gemesa/projects/omvll/omvll-ndk.so")
-set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} ${OMVLL}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OMVLL}")
+if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} ${OMVLL}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OMVLL}")
+endif()
 
 # Specifies a library name, specifies whether the library is STATIC or
 # SHARED, and provides relative paths to the source code. You can
