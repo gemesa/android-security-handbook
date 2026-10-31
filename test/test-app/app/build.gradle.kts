@@ -4,6 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.test"
+    ndkVersion = "29.0.14206865"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -34,7 +35,7 @@ android {
         ndk {
             // Specifies the ABI configurations of your native
             // libraries Gradle should build and package with your app.
-            abiFilters += listOf("x86_64", "arm64-v8a")
+            abiFilters += listOf("arm64-v8a")
         }
 
 

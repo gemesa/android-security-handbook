@@ -291,3 +291,15 @@ $ reboot
 ```
 
 Settings --> Storage --> remove CD attachment
+
+## O-MVLL
+
+Check NDK version supported by o-mvll: https://github.com/open-obfuscator/o-mvll/releases
+
+Check available NDK versions: https://github.com/android/ndk/wiki/Unsupported-Downloads
+
+```
+$ sdkmanager "ndk;29.0.14206865"
+$ wget https://github.com/open-obfuscator/o-mvll/releases/download/1.11.1/omvll_v1-11-1_linux_2026-10-29T11_58_24.tar.gz
+$ tar -xzf omvll_v1-11-1_linux_2026-10-29T11_58_24.tar.gz
+```
