@@ -36,9 +36,9 @@
 
 # Deobfuscation
 
-- [Ghidra - BCF (ollvm)](./ghidra-deobf-bcf.md)
-- [Ghidra - encrypted strings (basic)](./ghidra-deobf-enc-str.md)
-- [msynth - MBA (ollvm)](./msynth.md)
+- [Ghidra - BCF (ollvm)](./ghidra-deobf-bcf-ollvm.md)
+- [Ghidra - encrypted strings (basic)](./ghidra-deobf-enc-str-basic.md)
+- [msynth - MBA (ollvm)](./msynth-ollvm.md)
 
 # Testing
 

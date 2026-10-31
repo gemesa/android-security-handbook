@@ -20,13 +20,13 @@ emu-enc-str.py> Finished!
 ```
 
 ```c
-{{#include scripts/ghidra/enc-str/test_enc_str.c}}
+{{#include scripts/ghidra/enc-str-basic/test_enc_str.c}}
 ```
 
 ```sh
-{{#include scripts/ghidra/enc-str/build.sh}}
+{{#include scripts/ghidra/enc-str-basic/build.sh}}
 ```
 
 ```py
-{{#include scripts/ghidra/enc-str/emu-enc-str.py}}
+{{#include scripts/ghidra/enc-str-basic/emu-enc-str.py}}
 ```

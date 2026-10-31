@@ -2,7 +2,7 @@
 set -euo pipefail
 
 LLVM=/opt/llvm/bin
-PLUGIN=$PWD/../build/libLLVMObfuscator.so
+PLUGIN=$HOME/git-repos/obfuscator-llvm/build/libLLVMObfuscator.so
 SYSROOT=/opt/a64
 T="--target=aarch64-linux-gnu --sysroot=$SYSROOT"
 
