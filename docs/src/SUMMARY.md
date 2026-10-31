@@ -32,13 +32,13 @@
 # Obfuscation
 
 - [R8](./r8.md)
-- [obfuscator-llvm](./obfuscator-llvm.md)
+- [obfuscator-llvm (ollvm)](./obfuscator-llvm.md)
 
 # Deobfuscation
 
-- [Ghidra - BCF](./ghidra-deobf-bcf.md)
-- [Ghidra - encrypted strings](./ghidra-deobf-enc-str.md)
-- [msynth - MBA](./msynth.md)
+- [Ghidra - BCF (ollvm)](./ghidra-deobf-bcf.md)
+- [Ghidra - encrypted strings (basic)](./ghidra-deobf-enc-str.md)
+- [msynth - MBA (ollvm)](./msynth.md)
 
 # Testing
 
