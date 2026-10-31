@@ -15,4 +15,5 @@ __pycache__
 *.keylog
 *.jks
 *.idsig
-
+test/test-app/cache/
+test/test-app/omvll-logs/
