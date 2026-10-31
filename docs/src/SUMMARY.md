@@ -40,6 +40,7 @@
 - [Ghidra - BCF (ollvm)](./ghidra-deobf-bcf-ollvm.md)
 - [Ghidra - encrypted strings (basic)](./ghidra-deobf-enc-str-basic.md)
 - [Ghidra - encrypted strings (ollvm)](./ghidra-deobf-enc-str-ollvm.md)
+- [Ghidra - encrypted strings (omvll)](./ghidra-deobf-enc-str-omvll.md)
 - [msynth - MBA (ollvm)](./msynth-ollvm.md)
 
 # Testing
