@@ -23,15 +23,15 @@ deobf-bcf.py> Finished!
 ```
 
 ```py
-{{#include scripts/ghidra/bcf/deobf-bcf.py}}
+{{#include scripts/ghidra/bcf-ollvm/deobf-bcf.py}}
 ```
 
 ```c
-{{#include scripts/ghidra/bcf/test_bcf.c}}
+{{#include scripts/ghidra/bcf-ollvm/test_bcf.c}}
 ```
 
 ```sh
-{{#include scripts/ghidra/bcf/build.sh}}
+{{#include scripts/ghidra/bcf-ollvm/build.sh}}
 ```
 
 Before:
