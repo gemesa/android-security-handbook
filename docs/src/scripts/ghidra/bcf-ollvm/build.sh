@@ -11,15 +11,15 @@ OUT=test_bcf_a64
 
 export LLVM_OBF_SEED=0xA04252B187478C00A40BC6D81D1A8A52
 
-$LLVM/clang $T -O1 -S -emit-llvm $SRC -o ${OUT}.ll
-$LLVM/llc --relocation-model=pic -filetype=obj ${OUT}.ll -o ${OUT}.o
+$LLVM/clang $T -O1 -fPIC -S -emit-llvm $SRC -o ${OUT}.ll
+$LLVM/llc -filetype=obj ${OUT}.ll -o ${OUT}.o
 $LLVM/clang $T -fuse-ld=lld ${OUT}.o -o ${OUT}
 
 $LLVM/opt -load "$PLUGIN" -load-pass-plugin "$PLUGIN" \
 	-bcf_prob=100 -bcf_loop=1 \
 	-passes='function(bogus)' -S ${OUT}.ll -o ${OUT}_obf.ll
 
-$LLVM/llc --relocation-model=pic -filetype=obj ${OUT}_obf.ll -o ${OUT}_obf.o
+$LLVM/llc -filetype=obj ${OUT}_obf.ll -o ${OUT}_obf.o
 $LLVM/clang $T -fuse-ld=lld ${OUT}_obf.o -o ${OUT}_obf
 
 echo "opaque globals in IR:"
