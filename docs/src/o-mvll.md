@@ -16,6 +16,14 @@ $ source ./omvll.env
 $ ./gradlew clean assembleRelease
 ```
 
+```py
+{{#include ../../test/test-app/omvll_config.py}}
+```
+
+```
+{{#include ../../test/test-app/omvll.env}}
+```
+
 ```
 $ cat omvll-logs/omvll-module-logs/aarch64/native-lib.cpp-omvll-128971.log 
 [omvll::AntiHook] Executing on module /home/gemesa/git-repos/android-security-handbook/test/test-app/app/src/main/cpp/native-lib.cpp
