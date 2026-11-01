@@ -2,3 +2,6 @@
 title = "Android security handbook"
 authors = ["Andras Gemes"]
 language = "en"
+
+[output.html]
+additional-js = ["external-links.js"]
