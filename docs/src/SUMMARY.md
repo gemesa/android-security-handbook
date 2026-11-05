@@ -8,6 +8,7 @@
 
 - [Pixel 6a](./pixel-6a.md)
 - [Samsung S10e](./s10e.md)
+- [Redmi note 10 5G](./redmi-note-10-5g.md)
 - [KernelSU/KernelSU-Next](./kernelsu.md)
 - [Magisk](./magisk.md)
 
