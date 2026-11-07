@@ -45,6 +45,10 @@
 - [Ghidra - encrypted strings (omvll)](./ghidra-deobf-enc-str-omvll.md)
 - [msynth - MBA (ollvm)](./msynth-ollvm.md)
 
+# eBPF
+
+- [bpftrace](./bpftrace.md)
+
 # Testing
 
 - [Test app](./test-app.md)

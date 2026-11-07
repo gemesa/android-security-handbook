@@ -17,3 +17,4 @@ __pycache__
 *.idsig
 test/test-app/cache/
 test/test-app/omvll-logs/
+*.bt
