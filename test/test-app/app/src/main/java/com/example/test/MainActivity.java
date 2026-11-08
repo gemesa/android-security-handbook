@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         resultText.setText("");
         certText.setText("");
         new Thread(this::fetchInBackground).start();
+        Test.probe();
+        try {
+            new java.io.FileInputStream("/stackplz_java_marker").close();
+        } catch (Exception ignored) {}
     }
 
     // Runs on the background thread.
@@ -66,5 +70,4 @@ public class MainActivity extends AppCompatActivity {
         String text2 = String.join("\n", result.subList(1, result.size()));
         runOnUiThread(() -> certText.setText(text2));
     }
-
 }

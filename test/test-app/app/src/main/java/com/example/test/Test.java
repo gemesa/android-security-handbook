@@ -31,6 +31,8 @@ public class Test {
 
     public static native String stringFromNative();
 
+    public static native int probe();
+
     private static byte[][] keep;
 
     // A simple HTTP Request & Response Service.

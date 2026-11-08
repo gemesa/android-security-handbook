@@ -64,3 +64,18 @@ Java_com_example_test_Test_stringFromNative( JNIEnv* env, jclass clazz)
 
     return env->NewStringUTF("Hello from JNI !  Compiled with ABI " ABI ".");
 }
+
+#include <fcntl.h>
+#include <unistd.h>
+
+__attribute__((noinline))
+int do_probe() {
+    int fd = openat(AT_FDCWD, "/stackplz_marker", O_RDONLY);
+    if (fd >= 0) close(fd);
+    return fd;
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_example_test_Test_probe(JNIEnv*, jclass) {
+    return do_probe();
+}

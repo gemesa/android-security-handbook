@@ -48,6 +48,7 @@
 # eBPF
 
 - [bpftrace](./bpftrace.md)
+- [stackplz](./stackplz.md)
 
 # Testing
 
