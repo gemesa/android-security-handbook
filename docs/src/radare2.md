@@ -44,11 +44,21 @@ INFO: Propagate noreturn information (aanr)
 INFO: Use -AA or aaaa to perform additional experimental analysis
 INFO: Finding xrefs in noncode sections (e anal.in=io.maps.x; aav)
 WARN: Skipping aav because base address is zero. Use -B 0x800000 or aav0
-0x00000750    1     16 sym.imp.__cxa_finalize
-0x00000760    1     16 sym.imp.__cxa_atexit
-0x00000770    1     16 sym.imp.__register_atfork
-0x00000660    1     16 entry0
-0x000006c0    1     48 sym.Java_com_example_test_Test_stringFromNative
+0x00000900    1     16 sym.imp.__cxa_finalize
+0x00000910    1     16 sym.imp.__cxa_atexit
+0x00000920    1     16 sym.imp.__register_atfork
+0x00000950    1     16 sym.imp.__openat_2
+0x00000960    1     16 sym.imp.close
+```
+
+```
+$ r2 -q -c 'iE' app-debug/lib/arm64-v8a/libnative-lib.so 
+HINT: Relocs not applied, some references may not resolve: use -e bin.relocs.apply=true
+nth paddr      vaddr      bind   type size lib name                                        demangled
+――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+6   0x000007f0 0x000007f0 GLOBAL FUNC 48       Java_com_example_test_Test_stringFromNative
+8   0x00000854 0x00000854 GLOBAL FUNC 104      _Z8do_probev                                do_probe()
+9   0x000008bc 0x000008bc GLOBAL FUNC 36       Java_com_example_test_Test_probe
 ```
 
 References:
