@@ -25,6 +25,10 @@
 - [Memory dumping](./memory-dumping.md)
 - [Memory search](./memory-search.md)
 
+# Instrumentation
+
+- [LIEF](./lief.md)
+
 # Network traffic inspection
 
 - [Burp](./burp.md)
