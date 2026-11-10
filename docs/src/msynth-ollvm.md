@@ -25,6 +25,8 @@ $ pip install .
 $ unzip -d database -q database/3_variables_constants_7_nodes.txt.zip
 ```
 
+### Example 0
+
 The test binary is generated with [obfuscator-llvm](./obfuscator-llvm.md#usage):
 
 ```c
@@ -63,6 +65,28 @@ undefined8 main(int param_1,long param_2)
 ```
 $ python simplify.py           
 uVar1 | uVar2
+```
+
+### Example 1
+
+Simplify the following code:
+
+```c
+...
+  *(undefined8 *)(unaff_x19 + 0x840) = 0;
+...
+  (*(code *)((*(ulong *)(unaff_x19 + 0x840) ^ 0x32a6ad) +
+            (*(ulong *)(unaff_x19 + 0x840) & 0x32a6ad) * 2))();
+...
+```
+
+```py
+{{#include scripts/msynth/simplify2.py}}
+```
+
+```
+$ python simplify2.py
+x + 0x32A6AD
 ```
 
 References:
