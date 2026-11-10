@@ -48,6 +48,7 @@
 - [Ghidra - encrypted strings (ollvm)](./ghidra-deobf-enc-str-ollvm.md)
 - [Ghidra - encrypted strings (omvll)](./ghidra-deobf-enc-str-omvll.md)
 - [msynth - MBA (ollvm)](./msynth-ollvm.md)
+- [miasm](./miasm.md)
 
 # eBPF
 
