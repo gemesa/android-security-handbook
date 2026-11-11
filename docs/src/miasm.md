@@ -26,8 +26,7 @@ $ pip install miasm
 
 ```
 $ python simplify.py
-Original:   (x << 0x3) + (x << 0x2) + (x << 0x1)
-Simplified: x * 0xE
+0x32A86D
 ```
 
 References:
