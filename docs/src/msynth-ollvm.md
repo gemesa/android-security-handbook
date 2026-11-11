@@ -89,5 +89,16 @@ $ python simplify2.py
 x + 0x32A6AD
 ```
 
+### Example 2
+
+```py
+{{#include scripts/msynth/simplify-loop.py}}
+```
+
+```
+$ python simplify-loop.py
+x + 0x1
+```
+
 References:
 - https://github.com/mrphrazer/msynth/blob/main/scripts/synthesize_expression.py
