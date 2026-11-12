@@ -18,6 +18,7 @@
 - [JADX](./jadx.md)
 - [Ghidra](./ghidra.md)
 - [radare2](./radare2.md)
+- [dex2jar](./dex2jar.md)
 
 # Dynamic analysis
 

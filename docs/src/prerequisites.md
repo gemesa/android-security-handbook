@@ -303,3 +303,26 @@ $ sdkmanager "ndk;29.0.14206865"
 $ wget https://github.com/open-obfuscator/o-mvll/releases/download/1.11.1/omvll_v1-11-1_linux_2026-10-29T11_58_24.tar.gz
 $ tar -xzf omvll_v1-11-1_linux_2026-10-29T11_58_24.tar.gz
 ```
+
+## dex2jar
+
+```
+$ git clone https://github.com/ThexXTURBOXx/dex2jar
+$ cd dex2jar
+$ ./gradlew distZip
+$ cd dex-tools/build/distributions
+$ unzip dex-tools-2.4-SNAPSHOT.zip
+$ cd dex-tools-2.4-SNAPSHOT
+$ chmod +x *.sh
+$ pwd
+/home/gemesa/git-repos/dex2jar/dex-tools/build/distributions/dex-tools-2.4-SNAPSHOT
+```
+
+Add to `~/.zshrc`:
+
+```
+export PATH=$PATH:/home/gemesa/git-repos/dex2jar/dex-tools/build/distributions/dex-tools-2.4-SNAPSHOT
+```
+
+References:
+- https://github.com/ThexXTURBOXx/dex2jar#usage
