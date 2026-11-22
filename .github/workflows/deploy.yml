@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: write  # To push a branch 
@@ -35,6 +35,14 @@ jobs:
         with:
           # Upload entire repository
           path: 'docs/book'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
