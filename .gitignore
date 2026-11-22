@@ -20,3 +20,5 @@ test/test-app/omvll-logs/
 *.bt
 *.so
 *.jar
+*.dex
+
